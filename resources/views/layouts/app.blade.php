@@ -4,8 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'CRM') }} @yield('title')</title>
 
     <link rel="shortcut icon" href="{{ asset('/images/favicon.ico') }}">
     <link rel="stylesheet" href="{{ asset('/plugins/morris/morris.css') }}">
@@ -14,33 +13,26 @@
     <script src="{{ asset('/js/modernizr.min.js') }}"></script>
 </head>
 
-
     <body class="fixed-left">
-
-        <!-- Begin page -->
         <div id="wrapper">
-
-            <!-- Top Bar Start -->
             <div class="topbar">
 
-                <!-- LOGO -->
-                <div class="topbar-left">
-                    <a href="" class="logo"><span>Admin<span>to</span></span><i class="mdi mdi-layers"></i></a>
+                <div class="topbar-left" style="padding: 19px;">
+                    <img src="/svg/flags/065-ukraine.svg" height="35" style="float: left; padding-right: 3px;">
+                    <span style="font-weight: bold; float: left; line-height: 35px;">
+                        {{ config('app.name', 'CRM') }}
+                    </span>
                 </div>
 
-                <!-- Button mobile view to collapse sidebar menu -->
                 <div class="navbar navbar-default" role="navigation">
                     <div class="container-fluid">
 
-                        <!-- Page title -->
                         <ul class="nav navbar-nav list-inline navbar-left">
                             <li class="list-inline-item">
-                                <button class="button-menu-mobile open-left">
+                                <button class="open-left" style="float: left; background: 0 0;border: none;color: #435966;font-size: 21px;line-height: 68px;cursor: pointer">
                                     <i class="mdi mdi-menu"></i>
                                 </button>
-                            </li>
-                            <li class="list-inline-item">
-                                <h4 class="page-title">Dashboard</h4>
+                                <h4 class="page-title" style="float: left;">{{ __('pack.dashboard') }}</h4>
                             </li>
                         </ul>
 
@@ -49,7 +41,6 @@
                             <ul class="list-unstyled topbar-right-menu float-right mb-0">
 
                                 <li>
-                                    <!-- Notification -->
                                     <div class="notification-box">
                                         <ul class="list-inline mb-0">
                                             <li>
@@ -63,15 +54,34 @@
                                             </li>
                                         </ul>
                                     </div>
-                                    <!-- End Notification bar -->
                                 </li>
 
                                 <li class="hide-phone">
                                     <form class="app-search">
-                                        <input type="text" placeholder="Search..."
-                                               class="form-control">
+                                        <input type="text" placeholder="Search..." class="form-control">
                                         <button type="submit"><i class="fa fa-search"></i></button>
                                     </form>
+                                </li>
+                                <li>
+                                    <div class="notification-box">
+                                        <ul class="btn-group dropdown" style="margin-left: -20px;">
+                                            <li style="list-style: none;">
+                                                <a href="#" data-toggle="dropdown" aria-expanded="false">
+                                                    <i class="mdi mdi-account-circle"></i>
+                                                </a>
+                                                <hr>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    @foreach(\App\Locale::getAllLocales() as $locale)
+                                                        <a href="/setlocale/{{$locale->lnk}}" style="line-height: 15px; font-size: 14px;" class="dropdown-item">
+                                                            <img src="{{$locale->img}}" style="height: 20px;">
+                                                            <span>{{$locale->name}}</span> /
+                                                            <span style="font-weight: bold; text-transform: uppercase;">{{$locale->lnk}}</span>
+                                                        </a>
+                                                    @endforeach
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </li>
 
                             </ul>
@@ -81,261 +91,27 @@
             </div>
             <!-- Top Bar End -->
 
-
-            <!-- ========== Left Sidebar Start ========== -->
             <div class="left side-menu">
                 <div class="sidebar-inner slimscrollleft">
-
-                    <!-- User -->
-                    <div class="user-box">
-                        <div class="user-img">
-                            <img src="/images/users/avatar-1.jpg" alt="user-img" title="Mat Helme" class="rounded-circle img-thumbnail img-responsive">
-                            <div class="user-status offline"><i class="mdi mdi-adjust"></i></div>
-                        </div>
-                        <h5><a href="#">Mat Helme</a> </h5>
-                        <ul class="list-inline">
-                            <li class="list-inline-item">
-                                <a href="#" >
-                                    <i class="mdi mdi-settings"></i>
-                                </a>
-                            </li>
-
-                            <li class="list-inline-item">
-                                <a href="#" class="text-custom">
-                                    <i class="mdi mdi-power"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- End User -->
-
-                    <!--- Sidemenu -->
-                    <div id="sidebar-menu">
-                        <ul>
-                            <li class="text-muted menu-title">Navigation</li>
-
-                            <li>
-                                <a href="" class="waves-effect"><i class="mdi mdi-view-dashboard"></i> <span> Dashboard </span> </a>
-                            </li>
-
-                            <li>
-                                <a href="typography.html" class="waves-effect"><i class="mdi mdi-format-font"></i> <span> Typography </span> </a>
-                            </li>
-
-                            <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-invert-colors"></i> <span> User Interface </span> <span class="menu-arrow"></span></a>
-                                <ul class="list-unstyled">
-                                    <li><a href="ui-buttons.html">Buttons</a></li>
-                                    <li><a href="ui-cards.html">Cards</a></li>
-                                    <li><a href="ui-draggable-cards.html">Draggable Cards</a></li>
-                                    <li><a href="ui-checkbox-radio.html">Checkboxs-Radios</a></li>
-                                    <li><a href="ui-material-icons.html">Material Design Icons</a></li>
-                                    <li><a href="ui-font-awesome-icons.html">Font Awesome</a></li>
-                                    <li><a href="ui-dripicons.html">Dripicons</a></li>
-                                    <li><a href="ui-themify-icons.html">Themify Icons</a></li>
-                                    <li><a href="ui-modals.html">Modals</a></li>
-                                    <li><a href="ui-notification.html">Notification</a></li>
-                                    <li><a href="ui-range-slider.html">Range Slider</a></li>
-                                    <li><a href="ui-components.html">Components</a>
-                                    <li><a href="ui-sweetalert.html">Sweet Alert</a>
-                                    <li><a href="ui-treeview.html">Tree view</a>
-                                    <li><a href="ui-widgets.html">Widgets</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-texture"></i><span class="badge badge-warning pull-right">7</span><span> Forms </span> </a>
-                                <ul class="list-unstyled">
-                                    <li><a href="form-elements.html">General Elements</a></li>
-                                    <li><a href="form-advanced.html">Advanced Form</a></li>
-                                    <li><a href="form-validation.html">Form Validation</a></li>
-                                    <li><a href="form-wizard.html">Form Wizard</a></li>
-                                    <li><a href="form-fileupload.html">Form Uploads</a></li>
-                                    <li><a href="form-wysiwig.html">Wysiwig Editors</a></li>
-                                    <li><a href="form-xeditable.html">X-editable</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-view-list"></i> <span> Tables </span> <span class="menu-arrow"></span></a>
-                                <ul class="list-unstyled">
-                                    <li><a href="tables-basic.html">Basic Tables</a></li>
-                                    <li><a href="tables-datatable.html">Data Table</a></li>
-                                    <li><a href="tables-responsive.html">Responsive Table</a></li>
-                                    <li><a href="tables-editable.html">Editable Table</a></li>
-                                    <li><a href="tables-tablesaw.html">Tablesaw Table</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-chart-donut-variant"></i><span> Charts </span> <span class="menu-arrow"></span></a>
-                                <ul class="list-unstyled">
-                                    <li><a href="chart-flot.html">Flot Chart</a></li>
-                                    <li><a href="chart-morris.html">Morris Chart</a></li>
-                                    <li><a href="chart-chartist.html">Chartist Charts</a></li>
-                                    <li><a href="chart-chartjs.html">Chartjs Chart</a></li>
-                                    <li><a href="chart-other.html">Other Chart</a></li>
-                                </ul>
-                            </li>
-
-                            <li>
-                                <a href="calendar.html" class="waves-effect"><i class="mdi mdi-calendar"></i><span> Calendar </span></a>
-                            </li>
-
-                            <li>
-                                <a href="inbox.html" class="waves-effect"><i class="mdi mdi-email"></i><span class="badge badge-purple pull-right">New</span><span> Mail </span></a>
-                            </li>
-
-                            <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-google-pages"></i><span> Pages </span> <span class="menu-arrow"></span></a>
-                                <ul class="list-unstyled">
-                                    <li><a href="page-starter.html">Starter Page</a></li>
-                                    <li><a href="page-login.html">Login</a></li>
-                                    <li><a href="page-register.html">Register</a></li>
-                                    <li><a href="page-recoverpw.html">Recover Password</a></li>
-                                    <li><a href="page-lock-screen.html">Lock Screen</a></li>
-                                    <li><a href="page-confirm-mail.html">Confirm Mail</a></li>
-                                    <li><a href="page-404.html">Error 404</a></li>
-                                    <li><a href="page-500.html">Error 500</a></li>
-                                </ul>
-                            </li>
-
-                            <li class="has_sub">
-                                <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-layers"></i><span>Extra Pages </span> <span class="menu-arrow"></span></a>
-                                <ul class="list-unstyled">
-                                    <li><a href="extras-projects.html">Projects</a></li>
-                                    <li><a href="extras-tour.html">Tour</a></li>
-                                    <li><a href="extras-taskboard.html">Taskboard</a></li>
-                                    <li><a href="extras-taskdetail.html">Task Detail</a></li>
-                                    <li><a href="extras-profile.html">Profile</a></li>
-                                    <li><a href="extras-maps.html">Maps</a></li>
-                                    <li><a href="extras-contact.html">Contact list</a></li>
-                                    <li><a href="extras-pricing.html">Pricing</a></li>
-                                    <li><a href="extras-timeline.html">Timeline</a></li>
-                                    <li><a href="extras-invoice.html">Invoice</a></li>
-                                    <li><a href="extras-faq.html">FAQ</a></li>
-                                    <li><a href="extras-gallery.html">Gallery</a></li>
-                                    <li><a href="extras-email-template.html">Email template</a></li>
-                                    <li><a href="extras-maintenance.html">Maintenance</a></li>
-                                    <li><a href="extras-comingsoon.html">Coming soon</a></li>
-                                </ul>
-                            </li>
-
-                        </ul>
-                        <div class="clearfix"></div>
-                    </div>
-                    <!-- Sidebar -->
-                    <div class="clearfix"></div>
-
+                    @mainmenu @endmainmenu
                 </div>
-
             </div>
-            <!-- Left Sidebar End -->
 
 
-
-            <!-- ============================================================== -->
-            <!-- Start right Content here -->
-            <!-- ============================================================== -->
             <div class="content-page">
-                <!-- Start content -->
                 <div class="content">
                     @yield('content')
-                </div> <!-- content -->
+                </div>
 
                 <footer class="footer text-right">
-                    2016 - 2019 © Adminto. Coderthemes.com
+                    {{ __('pack.copy') }}
                 </footer>
-
             </div>
 
-
-            <!-- ============================================================== -->
-            <!-- End Right content here -->
-            <!-- ============================================================== -->
-
-
-            <!-- Right Sidebar -->
-            <div class="side-bar right-bar">
-                <a href="javascript:void(0);" class="right-bar-toggle">
-                    <i class="mdi mdi-close-circle-outline"></i>
-                </a>
-                <h4 class="">Notifications</h4>
-                <div class="notification-list nicescroll">
-                    <ul class="list-group list-no-border user-list">
-                        <li class="list-group-item">
-                            <a href="#" class="user-list-item">
-                                <div class="avatar">
-                                    <img src="/images/users/avatar-2.jpg" alt="">
-                                </div>
-                                <div class="user-desc">
-                                    <span class="name">Michael Zenaty</span>
-                                    <span class="desc">There are new settings available</span>
-                                    <span class="time">2 hours ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#" class="user-list-item">
-                                <div class="icon bg-info">
-                                    <i class="mdi mdi-account"></i>
-                                </div>
-                                <div class="user-desc">
-                                    <span class="name">New Signup</span>
-                                    <span class="desc">There are new settings available</span>
-                                    <span class="time">5 hours ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="#" class="user-list-item">
-                                <div class="icon bg-pink">
-                                    <i class="mdi mdi-comment"></i>
-                                </div>
-                                <div class="user-desc">
-                                    <span class="name">New Message received</span>
-                                    <span class="desc">There are new settings available</span>
-                                    <span class="time">1 day ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="list-group-item active">
-                            <a href="#" class="user-list-item">
-                                <div class="avatar">
-                                    <img src="/images/users/avatar-3.jpg" alt="">
-                                </div>
-                                <div class="user-desc">
-                                    <span class="name">James Anderson</span>
-                                    <span class="desc">There are new settings available</span>
-                                    <span class="time">2 days ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="list-group-item active">
-                            <a href="#" class="user-list-item">
-                                <div class="icon bg-warning">
-                                    <i class="mdi mdi-settings"></i>
-                                </div>
-                                <div class="user-desc">
-                                    <span class="name">Settings</span>
-                                    <span class="desc">There are new settings available</span>
-                                    <span class="time">1 day ago</span>
-                                </div>
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
-            </div>
-            <!-- /Right-bar -->
-
+            @notifications @endnotifications
         </div>
-        <!-- END wrapper -->
 
-
-        <!-- jQuery  -->
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <!-- <script src="/js/jquery.min.js"></script> -->
         <script src="/js/popper.min.js"></script>
         <script src="/js/bootstrap.min.js"></script>
         <script src="/js/detect.js"></script>
@@ -345,23 +121,12 @@
         <script src="/js/jquery.nicescroll.js"></script>
         <script src="/js/jquery.slimscroll.js"></script>
         <script src="/js/jquery.scrollTo.min.js"></script>
-
-        <!-- KNOB JS -->
-        <!--[if IE]>
-        <script type="text/javascript" src="/plugins/jquery-knob/excanvas.js"></script>
-        <![endif]-->
         <script src="/plugins/jquery-knob/jquery.knob.js"></script>
-
-        <!--Morris Chart-->
         <script src="/plugins/morris/morris.min.js"></script>
         <script src="/plugins/raphael/raphael-min.js"></script>
-
-        <!-- Dashboard init -->
         <script src="/pages/jquery.dashboard.js"></script>
-
-        <!-- App js -->
         <script src="/js/jquery.core.js"></script>
         <script src="/js/jquery.app.js"></script>
-
+        @yield('scripts')
     </body>
 </html>

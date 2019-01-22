@@ -15,6 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('setlocale/{locale}', function ($locale) {
+    if (in_array($locale, \Config::get('app.locales'))) { 
+    	Session::put('locale', $locale);
+    }
+    return redirect()->back();
+});
+
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -14,5 +14,5 @@ return [
     */
 
     'dashboard' => 'Dashboard',
-
+    'copy' => 'All rights reserved. 2019 © CRM IT-Solutions Today.'
 ];
