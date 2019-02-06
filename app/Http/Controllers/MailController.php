@@ -9,6 +9,16 @@ use Illuminate\Support\Facades\Mail;
 
 class MailController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware(['auth', 'verified']);
+    }
+
     public function send()
     {
         $objDemo = new \stdClass();

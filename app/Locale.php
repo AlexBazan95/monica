@@ -12,4 +12,10 @@ class Locale extends Model
     {
     	return Locale::get();
     }
+
+    public static function getLocaleImg($loc)
+    {
+    	return Locale::where('lnk', $loc)->value('img');
+    }
+
 }
