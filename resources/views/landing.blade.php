@@ -28,7 +28,7 @@
 						<div class="kanban-box card-box pad-landing-editor mt-2 mb-2">
 							<div class="contentbox-landing-editor row">
 								<div class="col-xl-10 col-8" style="max-width: 100%; overflow: hidden;">
-									<span class="contentbox-landing-editor-text" id="{{ $section['desc'] }}-desc">{{ __($section['desc']) }}</span>
+									<span class="contentbox-landing-editor-text" style="display: none;" id="{{ $section['desc'] }}-desc">{{ __($section['desc']) }}</span>
 									<span class="contentbox-landing-editor-text text-gray">#{{ $section['uident'] }}</span>
 								</div>
 								<div class="col-xl-2 col-4">

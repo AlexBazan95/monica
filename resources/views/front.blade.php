@@ -109,7 +109,7 @@
 						</div>
 					</div>
 				</div>
-				<nav class="header-nav-menu-mobile">
+				<nav class="header-nav-menu-mobile" style="background: #fff;">
 					<div class="container-fluid">
 						<ul class="menu nav-menu menu-mobile">
 							<li class="menu-item">
@@ -216,20 +216,14 @@
 			</section>
 
 			@foreach($sections as $section) 
-			<section>
-				<div class="wrap wrap--w1790">
-					<div class="container-fluid">
-						@component('components.landing.frontend.' . $section['type'], [
-							'desc' => __($section['desc']),
-							'uident' => $section['uident'],
-							'val' => $section['val'],
-							'title' => $section['title'],
-							'subtitle' => $section['subtitle'],
-							'img' => $section['img']])
-						@endcomponent
-					</div>
-				</div>
-			</section>
+				@component('components.landing.frontend.' . $section['type'], [
+					'desc' => __($section['desc']),
+					'uident' => $section['uident'],
+					'val' => $section['val'],
+					'title' => $section['title'],
+					'subtitle' => $section['subtitle'],
+					'img' => $section['img']])
+				@endcomponent
 			@endforeach
 
 			<section class="section p-t-120 p-b-135" id="contacts" style="background: #f3f3f3;">

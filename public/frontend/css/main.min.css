@@ -5039,14 +5039,22 @@ button {
 
 .header-nav-menu-mobile {
     display: none;
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    margin-top: 80px;
     margin-bottom: 20px
 }
 
 .header-mobile {
-    position: relative
+    position: fixed;
+    z-index: 10000;
 }
 
 .header-mobile .header-mobile__bar {
+    position: fixed;
+    background: #fff;
+    width: 100%;
     padding: 15px 0
 }
 

@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{{ asset('/plugins/morris/morris.css') }}">
     <link href="{{ asset('/plugins/hopscotch/css/hopscotch.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('/plugins/responsive-table/css/rwd-table.min.css') }}" rel="stylesheet" type="text/css" media="screen">
+    <link href="{{ asset('/plugins/toastr/toastr.min.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{ asset('/css/application.css') }}" type="text/css" />
     <link rel="stylesheet"href="{{ asset('/plugins/custombox/dist/custombox.min.css') }}">
     <link rel="stylesheet"href="{{ asset('/plugins/dragula/dragula.min.css') }}">
@@ -132,8 +133,27 @@
         <script src="{{ asset('/plugins/raphael/raphael-min.js') }}"></script>
         <script src="{{ asset('/plugins/responsive-table/js/rwd-table.min.js') }}" type="text/javascript"></script>
         <script src="{{ asset('/plugins/hopscotch/js/hopscotch.min.js') }}"></script>
+        <script src="{{ asset('/plugins/toastr/toastr.min.js') }}"></script>
         <script src="{{ asset('/js/jquery.core.js') }}"></script>
         <script src="{{ asset('/js/jquery.app.js') }}"></script>
+        <script type="text/javascript">
+            toastr.options = {
+                closeButton: true,
+                positionClass: 'toast-bottom-right',
+                preventDuplicates: false,
+                showEasing: 'linear',
+                hideEasing: 'linear',
+                showMethod: 'fadeIn',
+                hideMethod: 'fadeOut',
+                tapToDismiss: false,
+                extendedTimeOut: 1000,
+                showDuration: 150,
+                hideDuration: 150,
+                timeOut: 5000,
+                onclick: null
+            };
+            toastr['info']('mymsg', 'mytitle');
+        </script>
         @yield('scripts')
     </body>
 </html>

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Landing;
 use App\Customer;
+use App;
+use Session;
 
 class FrontController extends Controller
 {
