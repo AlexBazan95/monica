@@ -5,6 +5,10 @@ img {
     max-width: 100%
 }
 
+.additional-not-used{
+    display: none !important;
+}
+
 *,
 blockquote,
 body,

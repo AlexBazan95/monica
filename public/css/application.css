@@ -3,6 +3,10 @@
 	display: none;
 }
 
+.additional-not-used{
+	display: none !important;
+}
+
 .contentbox-landing-editor{
 	min-height: 30px;
 	padding: 0px 7px;

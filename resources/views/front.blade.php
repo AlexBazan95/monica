@@ -156,65 +156,6 @@
 				</div>
 			</section>
 
-			<section class="p-t-120" id="about">
-				<div class="section-title m-b-70">
-					<h5 class="title-sub">{{ __('front.fillers') }} {{ config('app.name', 'DESSINAGE') }}</h5>
-					<h2 class="title-1" style="text-transform: uppercase;">{{ __('front.about') }}</h2>
-				</div>
-				<div class="container">
-					<div class="media-about-2 p-b-80">
-						<div class="media__img">
-							<img src="./frontend/images/beauty-box.jpg" style="width: 100%" alt="{{ __('front.about') }} {{ config('app.name', 'DESSINAGE') }}">
-						</div>
-						<div class="media__body">
-							<h5 class="title-sub">
-								{{ __('front.weare') }}
-								<span style="text-transform: uppercase;">{{ config('app.name', 'DESSINAGE') }}</span>
-							</h5>
-							<h2 class="title-1">
-								{{ __('front.diveinto') }} 
-								<span style="text-transform: uppercase;">{{ config('app.name', 'DESSINAGE') }}</span> 
-								{{ __('front.ukraine') }}
-							</h2>
-							<p class="media__text">{{ App\Landing::getOption('about') }}</p>
-							<a class="au-btn au-btn--arrow" href="#contacts">{{ __('front.contactus') }}
-								<i class="zmdi zmdi-arrow-right ic-arrow"></i>
-							</a>
-						</div>
-					</div>
-					<div class="section-row section-row--fit" style="overflow: hidden;">
-						<div class="media-statistic" style="border-left:1px solid #ebebeb">
-							<span class="ti-cup media__icon wow fadeInLeft" data-wow-delay="0.2s" style="color:#555555"></span>
-							<div class="media__body">
-								<span class="number js-counterup">10</span>
-								<h4 class="name">{{ __('front.exp') }}</h4>
-							</div>
-						</div>
-						<div class="media-statistic" style="border-left:1px solid #ebebeb">
-							<span class="ti-user media__icon wow fadeInLeft" data-wow-delay="0.2s" style="color:#555555"></span>
-							<div class="media__body">
-								<span class="number js-counterup">2000</span>
-								<h4 class="name">{{ __('front.happyclients') }}</h4>
-							</div>
-						</div>
-						<div class="media-statistic" style="border-left:1px solid #ebebeb">
-							<span class="ti-home media__icon wow fadeInLeft" data-wow-delay="0.2s" style="color:#555555"></span>
-							<div class="media__body">
-								<span class="number js-counterup">85</span>
-								<h4 class="name">{{ __('front.intheworld') }}</h4>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<section class="p-t-120 pb-4" id="products">
-				<div class="section-title m-b-70">
-					<h5 class="title-sub">{{ __('front.indetails') }}</h5>
-					<h2 class="title-1" style="text-transform: uppercase;">{{ __('front.products') }}</h2>
-				</div>
-			</section>
-
 			@foreach($sections as $section) 
 				@component('components.landing.frontend.' . $section['type'], [
 					'desc' => __($section['desc']),
